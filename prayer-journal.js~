@@ -1,0 +1,24 @@
+  Prayers = new Meteor.Collection("prayers");
+
+if (Meteor.isClient) {
+  Template.new_prayer.title = function () {
+    return "Have something on your mind today? Write a prayer :)";
+  };
+
+  Template.new_prayer.events({
+    'click input.save' : function () {
+      var prayer = document.getElementById("prayer").value;
+      Prayers.insert({prayer: prayer});
+      
+      Template.new_prayer.preview = function() {
+        return prayer;
+      };
+    }
+  });
+}
+
+if (Meteor.isServer) {
+  Meteor.startup(function () {
+    // code to run on server at startup
+  });
+}

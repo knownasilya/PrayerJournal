@@ -1,0 +1,20 @@
+/* CSS declarations go here */
+#prayers {
+    width:20%;
+    float:left;
+}
+
+#main {
+    width:80%;
+    float:right;
+}
+
+#prayer_preview {
+    clear:left;
+    float:left;
+}
+
+#new_prayer .item {
+    float:left;
+    clear:left;
+}
