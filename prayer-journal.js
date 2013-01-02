@@ -32,7 +32,16 @@ if (Meteor.isClient) {
         'keyup #prayer' : function() {
             var preview_container = $("#prayer_preview");
             preview_container.fadeIn();
-            $(".preview_text").text(prayer.value);
+            var preview_formatted = prayer.value.replace(/\n/g,'<br/>');
+            $(".preview_text").html(preview_formatted);
+        },
+        'click #pray' : function() {
+            $("#main").html("");
+            var title = $("#prayer_title").fadeIn();
+            var prayer = $("#prayer").fadeIn();
+            var form = $("#new_prayer").fadeIn();
+            var preview = $(".preview_text").fadeIn();
+            var preview_container = $("#prayer_preview").fadeIn();
         }
     });
     
@@ -42,13 +51,17 @@ if (Meteor.isClient) {
     
     Template.recent_prayers.events({
         'keydown, click .recent' : function(event) {
-            console.log(event.srcElement.id);
+            var prayer_id = event.srcElement.id;
             var form = $("#new_prayer");
             var preview_container = $("#prayer_preview");
             
             form.fadeOut();
             preview_container.fadeOut();
-            
+            // insert the content            
+            var content = Prayers.find({_id: prayer_id}).fetch();
+            var content_prayer = "<p>" + content[0].prayer + "</p>";
+            var content_title = "<h1>" + content[0].title + "</h1>";
+            $("#main").html(content_title + content_prayer);
         }
     });
         

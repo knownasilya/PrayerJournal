@@ -1,4 +1,9 @@
 /* CSS declarations go here */
+* {
+    margin:0;
+    padding:0;
+}
+
 #prayers {
     width:20%;
     float:left;
@@ -17,4 +22,15 @@
 #new_prayer .item {
     float:left;
     clear:left;
+}
+
+header {
+    height: 1.8em;
+    background-color: #333;
+    text-align:right;
+    padding:0.3em 0.5em 0 0;
+}
+
+header a {
+    color: #fff;
 }
