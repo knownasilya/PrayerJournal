@@ -3,31 +3,33 @@
 // CLIENT
 
 if (Meteor.isClient) {
-    Template.new_prayer.title = function() {
+    Template.newPrayer.title = function() {
         return "Have something on your mind today? Write a prayer :)";
     };
 
     // New Prayer
-    Template.new_prayer.events({
+    Template.newPrayer.events({
         'click input.save' : function() {            
             var title = $("#prayer_title");
             var prayer = $("#prayer");
             var form = $("#new_prayer");
             var preview = $(".preview_text");
             var preview_container = $("#prayer_preview");
-
+            var currentUser = Meteor.userId();
             
 //            console.log(title.val());
 //            console.log(prayer.val());
-            
-            Prayers.insert({
-                title: title.val(), 
-                prayer: prayer.val()});
-//            form.fadeOut();
-            title.val('');
-            prayer.val('');
-            preview.text('');
-            preview_container.fadeOut();
+            if( currentUser !== null ) {
+                Prayers.insert({
+                    title: title.val(), 
+                    prayer: prayer.val(),
+                    user: currentUser });
+//                form.fadeOut();
+                title.val('');
+                prayer.val('');
+                preview.text('');
+                preview_container.fadeOut();
+            }
         },
         'keyup #prayer' : function() {
             var preview_container = $("#prayer_preview");
@@ -36,32 +38,30 @@ if (Meteor.isClient) {
             $(".preview_text").html(preview_formatted);
         },
         'click #pray' : function() {
-            $("#main").html("");
-            var title = $("#prayer_title").fadeIn();
-            var prayer = $("#prayer").fadeIn();
-            var form = $("#new_prayer").fadeIn();
-            var preview = $(".preview_text").fadeIn();
-            var preview_container = $("#prayer_preview").fadeIn();
+            Session.set("currentMainTemplate", "newPrayer");
         }
     });
     
-    Template.recent_prayers.prayers = function () {
-        return Prayers.find({});
+    Template.recentPrayers.prayers = function () {
+        return Prayers.find({user: Meteor.userId()});
     };
     
-    Template.recent_prayers.events({
+    Template.recentPrayers.events({
         'keydown, click .recent' : function(event) {
-            var prayer_id = event.srcElement.id;
-            var form = $("#new_prayer");
-            var preview_container = $("#prayer_preview");
+            Session.set("currentMainTemplate", "aPrayer");
+            var prayerId = event.srcElement.id;
+            Session.set("currentPrayer", prayerId);
+//            var form = $("#new_prayer");
+//            var preview_container = $("#prayer_preview");
             
-            form.fadeOut();
-            preview_container.fadeOut();
-            // insert the content            
-            var content = Prayers.find({_id: prayer_id}).fetch();
-            var content_prayer = "<p>" + content[0].prayer + "</p>";
-            var content_title = "<h1>" + content[0].title + "</h1>";
-            $("#main").html(content_title + content_prayer);
+//            form.fadeOut();
+//            preview_container.fadeOut();
+            
+            Template.aPrayer = function () {
+                if (Session.equals("currentMainTemplate", "aPrayer")) {            
+                    return Prayers.find({_id: prayerId});
+                }
+            }
         }
     });
         

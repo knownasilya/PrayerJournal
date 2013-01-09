@@ -6,3 +6,5 @@
 insecure
 preserve-inputs
 jquery
+accounts-ui
+accounts-google

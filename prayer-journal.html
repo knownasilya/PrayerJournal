@@ -11,14 +11,30 @@
         </span>
     </header>
     <div id="prayers">
-        {{> recent_prayers }}
+        {{> recentPrayers }}
     </div>
     <div id="main">
-        {{> new_prayer}}      
+        {{> newPrayer}}
+        {{> aPrayer}}
     </div>  
 </body>
 
-<template name="new_prayer">
+<template name="aPrayer">
+    <h1>
+        {{title}}
+    </h1>
+    <p>
+        {{prayer}}
+    </p>
+    <h2>
+        Answer
+    </h2>
+    <p>
+        {{answer}}
+    </p>
+</template>
+
+<template name="newPrayer">
     <h1>{{title}}</h1>
     <form id="new_prayer">
         <label for="prayer_title" class="item">Title</label>
@@ -30,11 +46,10 @@
     <div id="prayer_preview">
         <h2>Preview</h2>
         <p class="preview_text"></p>
-    </div>
-  
+    </div>  
 </template>
 
-<template name="recent_prayers">
+<template name="recentPrayers">
     <ul>
         {{#each prayers}}
         <li>
