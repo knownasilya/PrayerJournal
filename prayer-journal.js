@@ -1,4 +1,4 @@
-Prayers = new Meteor.Collection("prayers");
+//Prayers = new Meteor.Collection("prayers");
 
 // CLIENT
 
