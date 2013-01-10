@@ -1,0 +1,83 @@
+<body>
+    <header>
+        {{> header}}
+    </header>
+    <div id="prayers">
+        {{> recentPrayers}}
+    </div>
+    <div id="main">
+        {{> main}}
+    </div>  
+</body>
+
+<template name="aPrayer">
+    {{#each prayers}}
+        <h2>
+            {{title}}   
+        </h2>
+        <p>
+            {{prayer}}
+        </p>
+        {{#if answer}}
+            <h3>
+                Answer    
+            </h3>
+            <p>
+                {{answer}}    
+            </p>
+        {{/if}}
+        {{#unless answer}}
+            <button id="answerPrayer">
+                Write how GOD answered your prayer!
+            </button>
+            <form id="answerForm">
+                <textarea id="answer" class="item" name="answer" tabindex="1" required="true" wrap="soft" autofocus="true" cols="60" rows="10"></textarea>
+                <input type="button" class="saveAnswer item" value="Save Answer" />
+            </form>
+        {{/unless}}
+    {{/each}}
+    
+</template>
+
+<template name="newPrayer">
+    <h1>{{title}}</h1>
+    <form id="new_prayer">
+        <label for="prayer_title" class="item">Title</label>
+        <input id="prayer_title" class="item" type="text"/>
+        
+        <textarea id="prayer" class="item" name="prayer" tabindex="1" required="true" wrap="soft" autofocus="true" cols="60" rows="10"></textarea>
+        <input type="button" class="save item" value="Save Prayer" />
+    </form>
+    <div id="prayer_preview">
+        <h2>Preview</h2>
+        <p class="preview_text"></p>
+    </div> 
+</template>
+
+<template name="recentPrayers">
+    <ul>
+        {{#each prayers}}
+        <li>
+            <a href="#" id="{{_id}}" class="recent">{{title}}</a>
+        </li>
+        {{/each}}
+    </ul>
+</template>
+
+<template name="header">
+    <span>
+        {{loginButtons}}   
+        <a id="pray" href="#">
+            Write a new Prayer
+        </a>
+    </span>
+</template>
+
+<template name="main">
+    {{#if mainTemplateIs "newPrayer"}}
+        {{> newPrayer}}
+    {{/if}}
+    {{#if mainTemplateIs "aPrayer"}}
+        {{> aPrayer}}
+    {{/if}}
+</template>
