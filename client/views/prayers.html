@@ -7,7 +7,8 @@
     </div>
     <div id="main">
         {{> main}}
-    </div>  
+    </div>
+    <!--MANAGE section?-->
 </body>
 
 <template name="aPrayer">
@@ -43,10 +44,10 @@
     <h1>{{title}}</h1>
     <form id="new_prayer">
         <label for="prayer_title" class="item">Title</label>
-        <input id="prayer_title" class="item" type="text"/>
+        <input id="prayer_title" class="item" type="text" tabindex="1"/>
         
-        <textarea id="prayer" class="item" name="prayer" tabindex="1" required="true" wrap="soft" autofocus="true" cols="60" rows="10"></textarea>
-        <input type="button" class="save item" value="Save Prayer" />
+        <textarea id="prayer" class="item" name="prayer" tabindex="2" required="true" wrap="soft" autofocus="true" cols="60" rows="10"></textarea>
+        <input type="button" class="save item" value="Save Prayer" tabindex="3" />
     </form>
     <div id="prayer_preview">
         <h2>Preview</h2>

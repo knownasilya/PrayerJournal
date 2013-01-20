@@ -7,20 +7,17 @@ Template.newPrayer.events({
     'click input.save' : function() {            
         var title = $("#prayer_title");
         var prayer = $("#prayer");
-        var form = $("#new_prayer");
-        var preview = $(".preview_text");
         var preview_container = $("#prayer_preview");
         var currentUser = Meteor.userId();
         
         if( currentUser !== null ) {
-            Prayers.insert({
-                title: title.val(), 
-                prayer: prayer.val(),
-                user: currentUser });
+            Meteor.call( "createPrayer", currentUser, 
+                title.val(),
+                prayer.val(),
+                false );
             
             title.val('');
             prayer.val('');
-            preview.text('');
             preview_container.fadeOut();
         }
     },
@@ -43,7 +40,7 @@ Template.header.events({
 });
 
 Template.recentPrayers.prayers = function () {
-    return Prayers.find({user: Meteor.userId()});
+    return Prayers.find({owner: Meteor.userId()});
 };
 
 Template.recentPrayers.events({
