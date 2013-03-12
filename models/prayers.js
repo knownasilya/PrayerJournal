@@ -4,7 +4,7 @@
  *   owner: user id
  *   prayer: The owners prayer
  *   answer: God's answer
- *   public: boolean
+ *   visibility: boolean
  *   shared_with: Array of Users, only if not public
  *   date_created: Date
  *   date_answered: Date
@@ -38,7 +38,7 @@ Meteor.methods({
         owner: userId,
         title: title,
         prayer: prayer,
-        public: visibility
+        visibility: visibility
       });
     }
   }

@@ -1,16 +1,3 @@
-<body>
-    <header>
-        {{> header}}
-    </header>
-    <div id="prayers">
-        {{> recentPrayers}}
-    </div>
-    <div id="main">
-        {{> main}}
-    </div>
-    <!--MANAGE section?-->
-</body>
-
 <template name="aPrayer">
     {{#each prayers}}
         <h2>
@@ -28,8 +15,8 @@
             </p>
         {{/if}}
         {{#unless answer}}
-            <button id="answerPrayer">
-                Write how GOD answered your prayer!
+            <button id="answerPrayer" class="btn btn-success">
+                Add Answer
             </button>
             <form id="answerForm">
                 <textarea id="answer" class="item" name="answer" tabindex="1" required="true" wrap="soft" autofocus="true" cols="60" rows="10"></textarea>
@@ -47,16 +34,12 @@
         <input id="prayer_title" class="item" type="text" tabindex="1"/>
         
         <textarea id="prayer" class="item" name="prayer" tabindex="2" required="true" wrap="soft" autofocus="true" cols="60" rows="10"></textarea>
-        <input type="button" class="save item" value="Save Prayer" tabindex="3" />
+        <input type="button" class="save item btn btn-success" value="Save" tabindex="3" />
     </form>
-    <div id="prayer_preview">
-        <h2>Preview</h2>
-        <p class="preview_text"></p>
-    </div> 
 </template>
 
 <template name="recentPrayers">
-    <ul>
+    <ul class="nav nav-pills nav-stacked">
         {{#each prayers}}
         <li>
             <a href="#" id="{{_id}}" class="recent">{{title}}</a>
@@ -66,12 +49,12 @@
 </template>
 
 <template name="header">
-    <span>
-        {{loginButtons}}   
-        <a id="pray" href="#">
-            Write a new Prayer
-        </a>
-    </span>
+    <a class="brand" href="#">Prayer Journal</a>
+    <span class="pull-right">{{loginButtons}}</span>
+    <ul class="nav pull-right">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a id="pray" href="#">New Prayer</a></li>
+    </ul>
 </template>
 
 <template name="main">

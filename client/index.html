@@ -4,5 +4,24 @@
         Login
     </title>
 </head>
-<body>     
+<body>
+    <header class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            {{> header}}
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div id="prayers" class="span3">
+                {{> recentPrayers}}
+            </div>
+
+            <div id="main" class="span9">
+                {{> main}}
+            </div>
+        </div>
+    </div>
+
+
 </body>

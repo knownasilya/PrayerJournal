@@ -1,5 +1,5 @@
 Template.newPrayer.title = function() {
-    return "Have something on your mind today? Write a prayer :)";
+    return "Pray";
 };
 
 // New Prayer
@@ -39,6 +39,9 @@ Template.header.events({
     }
 });
 
+/* Replace with this: https://github.com/erobit/meteor-accounts-ui-bootstrap-dropdown */
+
+
 Template.recentPrayers.prayers = function () {
     return Prayers.find({owner: Meteor.userId()});
 };
@@ -46,6 +49,8 @@ Template.recentPrayers.prayers = function () {
 Template.recentPrayers.events({
     'keydown, click .recent' : function(event) {
         var prayerId = event.srcElement.id;
+        $(event.srcElement).parent().parent().find("li").removeClass("active");
+        $(event.srcElement).parent().addClass("active");
         Session.set("currentPrayer", prayerId);
         Session.set("currentMainTemplate", "aPrayer");
     }

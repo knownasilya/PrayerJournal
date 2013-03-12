@@ -3,7 +3,7 @@
     margin:0;
     padding:0;
 }
-
+/*
 #prayers {
     width:20%;
     float:left;
@@ -13,6 +13,7 @@
     width:80%;
     float:right;
 }
+*/
 
 #prayer_preview {
     clear:left;
@@ -24,6 +25,10 @@
     clear:left;
 }
 
+.recent, h2 {
+    text-transform: capitalize;
+}
+/*
 header {
     height: 1.8em;
     background-color: #333;
@@ -33,7 +38,7 @@ header {
 
 header a {
     color: #fff;
-}
+}*/
 
 #answerForm {
     display: none;
