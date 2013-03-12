@@ -1,4 +1,3 @@
-
 /* 
  * Each Prayer is represented by a document in the Prayers Collection:
  *   owner: user id
@@ -11,7 +10,6 @@
  *   estimated_duration: Time
  */
 Prayers = new Meteor.Collection( "prayers" );
-Needs = new Meteor.Collection( "needs" );
 
 Prayers.allow({
   insert: function ( options ) {
