@@ -1,27 +1,25 @@
 
 <head>
-    <title>
-        Login
-    </title>
+  <title>
+    PrayerJournal
+  </title>
 </head>
 <body>
-    <header class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            {{> header}}
-        </div>
-    </header>
+  <header class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+          {{> header}}
+      </div>
+  </header>
 
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div id="prayers" class="span3">
-                {{> recentPrayers}}
-            </div>
+  <div class="container">
+    <div class="row-fluid">
+      <section id="prayers" class="span4">
+        {{> recentPrayers}}
+      </section>
 
-            <div id="main" class="span9">
-                {{> main}}
-            </div>
-        </div>
+      <div id="main" class="span8">                
+        {{> main}}                
+      </div>
     </div>
-
-
+  </div>
 </body>

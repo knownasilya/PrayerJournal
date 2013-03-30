@@ -1,48 +1,64 @@
 <template name="aPrayer">
-    {{#each prayers}}
-        <h2>
-            {{title}}   
-        </h2>
-        <p>
-            {{prayer}}
-        </p>
-        {{#if answer}}
-            <h3>
-                Answer    
-            </h3>
-            <p>
-                {{answer}}    
-            </p>
-        {{/if}}
-        {{#unless answer}}
-            <button id="answerPrayer" class="btn btn-success">
-                Add Answer
-            </button>
-            <form id="answerForm">
-                <textarea id="answer" class="item" name="answer" tabindex="1" required="true" wrap="soft" autofocus="true" cols="60" rows="10"></textarea>
-                <input type="button" class="saveAnswer item" value="Save Answer" />
-            </form>
-        {{/unless}}
-    {{/each}}
+  {{#each prayers}}
+    <h3>
+      {{title}}   
+
+    </h3>    
     
+    <p>
+      <div class="controls clearfix">
+        <div class="btn-group pull-right">
+          <button id="edit-prayer" class="btn btn-small">Edit</button>
+          <button class="btn btn-small dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+          </button>
+
+          <ul class="dropdown-menu">
+            <li><a tabindex="-1">Publicize</a></li>
+            <li><a tabindex="-1">Rename</a></li>
+            <li class="divider"></li>
+            <li><a id="delete-prayer" tabindex="-1">Delete</a></li>
+          </ul>
+        </div>
+      </div>
+
+      {{prayer}}
+    </p>
+    {{#if answer}}
+      <p id="answer">
+          {{answer}}    
+      </p>
+    {{/if}}
+    {{#unless answer}}
+      <form id="answer-form">
+        <textarea class="item input-full" name="answer" tabindex="1" required="true" wrap="soft" autofocus="true" rows="10"></textarea>
+        <input type="button" class="btn btn-success save-answer item" value="Save Answer" />
+      </form>
+    {{/unless}}
+  {{/each}}    
 </template>
 
 <template name="newPrayer">
-    <h1>{{title}}</h1>
+    <h3>{{title}}</h3>
     <form id="new_prayer">
         <label for="prayer_title" class="item">Title</label>
-        <input id="prayer_title" class="item" type="text" tabindex="1"/>
+        <input id="prayer_title" class="item input-xlarge" type="text" tabindex="1"/>
         
-        <textarea id="prayer" class="item" name="prayer" tabindex="2" required="true" wrap="soft" autofocus="true" cols="60" rows="10"></textarea>
+        <textarea id="prayer" class="item input-full" name="prayer" tabindex="2" required="true" wrap="soft" autofocus="true" cols="60" rows="10"></textarea>
         <input type="button" class="save item btn btn-success" value="Save" tabindex="3" />
     </form>
 </template>
 
 <template name="recentPrayers">
-    <ul class="nav nav-pills nav-stacked">
+    <h3>Prayers 
+        <small class="pull-right">
+            <a id="pray" class="btn btn-mini btn-primary">New Prayer</a>
+        </small>
+    </h3>
+    <ul class="recent nav nav-pills nav-stacked well">
         {{#each prayers}}
         <li>
-            <a href="#" id="{{_id}}" class="recent">{{title}}</a>
+            <a href="#" id="{{_id}}">{{title}}</a>
         </li>
         {{/each}}
     </ul>
@@ -53,7 +69,6 @@
     <span class="pull-right">{{loginButtons}}</span>
     <ul class="nav pull-right">
         <li class="active"><a href="#">Home</a></li>
-        <li><a id="pray" href="#">New Prayer</a></li>
     </ul>
 </template>
 

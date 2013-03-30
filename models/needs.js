@@ -5,4 +5,4 @@
  *  date_created: date
  *
  */
-Needs = Meteor.Collection("needs");
+Needs = new Meteor.Collection("needs");

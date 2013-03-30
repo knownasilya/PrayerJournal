@@ -39,6 +39,9 @@ Meteor.methods({
         visibility: visibility
       });
     }
+  },
+  deletePrayer: function (userId, prayerId) {
+    Prayers.remove(userId, prayerId);
   }
 });
 

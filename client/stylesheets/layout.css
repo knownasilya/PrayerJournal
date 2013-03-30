@@ -3,6 +3,47 @@
     margin:0;
     padding:0;
 }
+
+a {
+    cursor: pointer;
+}
+
+h3 {
+  font-weight: normal;
+}
+
+.container {
+  margin-top: 5em;
+}
+
+.recent a {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+
+.input-full {
+  width: 100%;
+}
+
+#answer {
+  border-top: 1px solid #ccc;
+  padding-top: 1em;
+}
+
+#pray {
+  margin-top: 1em;
+}
+
+#save-answer {
+  clear: left;
+}
+
+#answer-form textarea {
+  display: block;
+}
+
 /*
 #prayers {
     width:20%;
@@ -39,7 +80,3 @@ header {
 header a {
     color: #fff;
 }*/
-
-#answerForm {
-    display: none;
-}
