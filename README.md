@@ -1,6 +1,8 @@
 PrayerJournal
 =============
 
+Note: Project currently abandoned, see more recent version [here](https://github.com/knownasilya/prayer).
+
 An online prayer journal that sends prayer reminders and asks when prayers have been answered. A Meteor app.
 
 Features
